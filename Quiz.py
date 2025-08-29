@@ -1,67 +1,94 @@
 import streamlit as st
+from PIL import Image
+
+st.title("✨ What Type of Tea Are You? ☕")
  
-st.title("✨ What Type of Coffee Are You? ☕")
- 
-st.write("Answer the questions below to find out what coffee matches your personality!")
+st.write("Answer the questions below to find out what tea matches your personality!")
  
 # Question 1
 
 q1 = st.radio(
 
-    "How do you usually spend your weekend?",
+    "What flavor profile suits you best?",
 
-    ("Relaxing with a book", "Hanging out with friends", "Exploring new places", "Catching up on work")
+    ("Bitter", "Fruity", "Rich & Smooth", "Floral")
 
 )
+
  
 # Question 2
 
-q2 = st.radio(
+st.write("Which tea latte/s do you prefer?")
+q2 = st.selectbox("Pick one", ["Earl Grey Latte", "Matcha Latte", "Chain Tea Latte"])
 
-    "Pick a vacation destination:",
 
-    ("Paris", "Tokyo", "New York", "Bali")
 
-)
  
 # Question 3
 
-q3 = st.radio(
+st.write("How many cups of tea would you typically drink in a day?")
+q3 = st.slider("Pick an answer:",1, 10)
 
-    "What’s your go-to vibe?",
 
-    ("Calm and cozy", "Fun and energetic", "Adventurous", "Focused and productive")
 
+#Quuestion 4
+
+q4 = st.radio(
+
+    "Choose an animal",
+
+    ("Swan", "Duck", "Shark", "Capybara")
 )
+
+
+#Question 5
+
+st.write("How many cubes of sugar would you put in your tea")
+q5=value = st.number_input("Enter your answer:", step=1)
+
+
+    
  
 # Simple result logic (without lists/dicts/session_state)
 
 if st.button("Show My Coffee Personality!"):
 
-    if q1 == "Relaxing with a book" or q3 == "Calm and cozy":
+    if q1 == "Fruity" or q3 == "Swan":
 
-        st.subheader("☕ You’re a Latte!")
+        st.subheader("☕ You’re a Sencha green tea!")
 
         st.write("Warm, comforting, and always reliable.")
+        
+        green_image = Image.open("images2/green.jpeg")
+        st.image(green_image, width = 180)
 
         st.balloons()
  
-    elif q1 == "Hanging out with friends" or q3 == "Fun and energetic":
-
-        st.subheader("🥤 You’re an Iced Coffee!")
-
-        st.write("Cool, refreshing, and always a good time.")
- 
-    elif q1 == "Exploring new places" or q2 == "Tokyo":
+    elif q1 == "Bitter" or q2 == "Matcha Tea Latte":
 
         st.subheader("🍵 You’re a Matcha Latte!")
 
+        st.write("Ummami, refreshing, and always a good time.")
+
+        matcha_image = Image.open("images2/matcha.jpeg")
+        st.image(matcha_image, width = 180)
+ 
+    elif q1 == "Rich & Smooth" or q4 == "2" or q4 == "3" or q4 == "1" or q4 == "4":
+
+        st.subheader("🍵 You’re an oolong tea!")
+
         st.write("Unique, adventurous, and full of surprises.")
+
+        oolong_image = Image.open("images2/oolong.jpeg")
+        st.image(oolong_image, width = 180)
  
     else:
 
-        st.subheader("⚡ You’re an Espresso!")
+        st.subheader("⚡ You’re a black tea!")
 
         st.write("Strong, focused, and ready to take on anything.")
+
+        blacktea_image = Image.open("images2/earlGrey.jpeg")
+        st.image(blacktea_image, width = 180)
 
  
